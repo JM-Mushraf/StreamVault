@@ -1,0 +1,28 @@
+# Visual Studio
+.vs/
+bin/
+obj/
+
+# User files
+*.user
+*.suo
+
+# VS Code
+.vscode/
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# App Settings
+StreamVault/appsettings.json
+StreamVault/appsettings.Development.json
+
+# Publish
+publish/
+
+# OS files
+Thumbs.db
+Desktop.ini

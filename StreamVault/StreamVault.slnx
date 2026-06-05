@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="../SV.Common/SV.Common.csproj" />
+  <Project Path="../SV.Data/SV.Data.csproj" />
+  <Project Path="../SV.Service/SV.Service.csproj" />
+  <Project Path="../SV.Store/SV.Store.csproj" />
+  <Project Path="StreamVault.csproj" />
+</Solution>
