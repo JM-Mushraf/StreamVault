@@ -32,7 +32,9 @@ public class GenreController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] SV.Common.DTOs.Genre.CreateGenreDto request)
     {
-        await _genreService.CreateGenreAsync(request.Name, "system");
+        
+        var createdBy = User.FindFirst("UserGuid")?.Value ?? User.Identity?.Name ?? User.FindFirst("FullName")?.Value ?? "system";
+        await _genreService.CreateGenreAsync(request.Name, createdBy);
         return Ok(new { success = true });
     }
 }

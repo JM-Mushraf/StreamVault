@@ -18,7 +18,7 @@ public class AdminController : ControllerBase
     }
 
     [Authorize(Roles = "1")]
-    [HttpPost("seed")]
+    [HttpPost("seed")] // Here seed is used to populate the database with initial data for roles, plans, and genres. This is typically done once during setup or testing.
     public IActionResult Seed()
     {
         try

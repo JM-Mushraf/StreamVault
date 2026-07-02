@@ -21,7 +21,7 @@ namespace SV.Store.Implementations
         {
             using var conn = _connectionFactory.CreateConnection();
             if (conn.State == ConnectionState.Closed) conn.Open();
-            var rows = await conn.QueryAsync<dynamic>("GetGenres", commandType: CommandType.StoredProcedure);
+            var rows = await conn.QueryAsync<dynamic>(SV.Common.Constants.AppConstants.SpGetGenres, commandType: CommandType.StoredProcedure);
             return rows.Select(r => (object)r).ToList();
         }
 
@@ -30,7 +30,7 @@ namespace SV.Store.Implementations
             using var conn = _connectionFactory.CreateConnection();
             if (conn.State == ConnectionState.Closed) conn.Open();
             var id = await conn.QuerySingleAsync<int>(
-                "CreateGenre",
+                SV.Common.Constants.AppConstants.SpInsertGenreLiteral,
                 new { GenreName = name, CreatedBy = createdBy },
                 commandType: CommandType.StoredProcedure);
             return id;

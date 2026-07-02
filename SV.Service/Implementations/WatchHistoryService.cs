@@ -6,14 +6,25 @@ namespace SV.Service.Implementations
 {
     public class WatchHistoryService : IWatchHistoryService
     {
-        public Task InsertWatchHistoryAsync(int userId, int movieId, System.DateTime watchedDate, int watchMinutes, string deviceType)
+        private readonly SV.Store.Abstractions.IWatchHistoryStore _store;
+
+        public WatchHistoryService(SV.Store.Abstractions.IWatchHistoryStore store)
         {
-            return Task.CompletedTask;
+            _store = store;
+        }
+        public Task InsertWatchHistoryAsync(string userGuid, string movieGuid, System.DateTime watchedDate, int watchMinutes, string deviceType, string createdBy, int playheadSeconds = 0, bool isFinished = false, string? profileGuid = null)
+        {
+            return _store.InsertAsync(userGuid, movieGuid, watchedDate, watchMinutes, deviceType, createdBy, playheadSeconds, isFinished, profileGuid);
         }
 
-        public Task<List<object>> GetWatchHistoryPagedAsync(int userId, int page, int pageSize)
+        public Task<List<object>> GetWatchHistoryPagedAsync(string userGuid, int page, int pageSize, string? profileGuid = null)
         {
-            return Task.FromResult(new List<object>());
+            return _store.GetPagedAsync(userGuid, page, pageSize, profileGuid);
+        }
+
+        public Task<object?> GetResumeProgressAsync(string userGuid, string movieGuid, string? profileGuid = null)
+        {
+            return _store.GetResumeProgressAsync(userGuid, movieGuid, profileGuid);
         }
     }
 }

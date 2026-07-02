@@ -27,12 +27,23 @@ namespace SV.Store.Implementations
             return rows.Select(r => (object)r).ToList();
         }
 
-        public async Task CreatePlanAsync(object request)
+        public async Task CreatePlanAsync(SV.Common.DTOs.CreatePlanRequest request, string createdBy)
         {
             using var conn = _connectionFactory.CreateConnection();
             if (conn.State == ConnectionState.Closed) conn.Open();
 
-            await conn.ExecuteAsync(AppConstants.SpInsertPlan, request, commandType: CommandType.StoredProcedure);
+            // Map request fields to stored procedure parameters
+            var parameters = new
+            {
+                PlanName = request.Name,
+                MonthlyPrice = request.Price,
+                // default to 1 screen if not provided
+                ScreenLimit = 1,
+                VideoQuality = "HD",
+                CreatedBy = createdBy
+            };
+
+            await conn.ExecuteAsync(AppConstants.SpInsertPlan, parameters, commandType: CommandType.StoredProcedure);
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Text;
 
-namespace SV.Data.Configurations
-{
-    internal class DatabaseConfiguration
-    {
-    }
-}
+//namespace SV.Data.Configurations
+//{
+//    internal class DatabaseConfiguration
+//    {
+//    }
+//}

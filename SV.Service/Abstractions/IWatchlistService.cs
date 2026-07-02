@@ -5,8 +5,8 @@ namespace SV.Service.Abstractions
 {
     public interface IWatchlistService
     {
-        Task AddToWatchlistAsync(int userId, int movieId);
+        Task AddToWatchlistAsync(string userGuid, string movieGuid, string createdBy, string? profileGuid = null);
         Task RemoveFromWatchlistAsync(string watchlistGuid, string updatedBy);
-        Task<List<object>> GetUserWatchlistAsync(string userGuid);
+        Task<List<object>> GetUserWatchlistAsync(string userGuid, string? profileGuid = null);
     }
 }

@@ -6,6 +6,6 @@ namespace SV.Store.Abstractions
     public interface IPlanStore
     {
         Task<List<object>> GetPlansAsync();
-        Task CreatePlanAsync(object request);
+        Task CreatePlanAsync(SV.Common.DTOs.CreatePlanRequest request, string createdBy);
     }
 }

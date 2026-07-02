@@ -21,7 +21,51 @@ namespace SV.Store.Implementations
             using var conn = _connectionFactory.CreateConnection();
             if (conn.State == ConnectionState.Closed) conn.Open();
 
-            await conn.ExecuteAsync(AppConstants.SpInsertPayment, new { SubscriptionId = subscriptionId, Amount = amount, PaymentMethod = paymentMethod, TransactionStatus = transactionStatus, PaidOn = paidOn, CreatedBy = "system" }, commandType: CommandType.StoredProcedure);
+            // Resolve guid
+            var guid = System.Guid.NewGuid().ToString("N");
+            await conn.ExecuteAsync("INSERT INTO tbl_PaymentTransaction (PaymentGuid, SubscriptionId, Amount, PaymentMethod, TransactionStatus, PaidOn, IsActive, CreatedOn, CreatedBy) VALUES (@Guid, @SubscriptionId, @Amount, @PaymentMethod, @TransactionStatus, @PaidOn, 1, GETDATE(), 'system')", new { Guid = guid, SubscriptionId = subscriptionId, Amount = amount, PaymentMethod = paymentMethod, TransactionStatus = transactionStatus, PaidOn = paidOn });
+        }
+
+        public async Task<System.Collections.Generic.List<object>> GetHistoryAsync(string userGuid)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            if (conn.State == ConnectionState.Closed) conn.Open();
+
+            string query = @"
+                SELECT 
+                    p.PaymentGuid, p.Amount, p.PaymentMethod, p.TransactionStatus, p.PaidOn,
+                    s.SubscriptionGuid, s.StartDate, s.EndDate,
+                    pl.PlanName, pl.MonthlyPrice
+                FROM tbl_PaymentTransaction p
+                INNER JOIN tbl_Subscription s ON p.SubscriptionId = s.SubscriptionId
+                INNER JOIN mst_User u ON s.UserId = u.UserId
+                INNER JOIN mst_Plan pl ON s.PlanId = pl.PlanId
+                WHERE u.UserGuid = @UserGuid AND p.IsActive = 1
+                ORDER BY p.PaidOn DESC";
+
+            var rows = await conn.QueryAsync<dynamic>(query, new { UserGuid = userGuid });
+            return rows.Select(r => (object)r).ToList();
+        }
+
+        public async Task<object?> GetReceiptDetailsAsync(string paymentGuid)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            if (conn.State == ConnectionState.Closed) conn.Open();
+
+            string query = @"
+                SELECT 
+                    p.PaymentGuid, p.Amount, p.PaymentMethod, p.TransactionStatus, p.PaidOn,
+                    s.SubscriptionGuid, s.StartDate, s.EndDate,
+                    pl.PlanName, pl.MonthlyPrice,
+                    u.UserGuid, u.FullName, u.Email
+                FROM tbl_PaymentTransaction p
+                INNER JOIN tbl_Subscription s ON p.SubscriptionId = s.SubscriptionId
+                INNER JOIN mst_User u ON s.UserId = u.UserId
+                INNER JOIN mst_Plan pl ON s.PlanId = pl.PlanId
+                WHERE p.PaymentGuid = @PaymentGuid AND p.IsActive = 1";
+
+            return await conn.QueryFirstOrDefaultAsync<dynamic>(query, new { PaymentGuid = paymentGuid });
         }
     }
+
 }

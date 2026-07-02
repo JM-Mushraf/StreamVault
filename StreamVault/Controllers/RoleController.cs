@@ -22,16 +22,24 @@ public class RoleController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] SV.Common.DTOs.Role.CreateRoleDto request)
     {
-        var createdBy = User.Identity?.Name ?? "SYSTEM";
-        await _roleService.CreateRoleAsync(request.Name, createdBy);
-        return Ok(new { success = true });
+        var createdBy = User.FindFirst("UserGuid")?.Value ?? User.Identity?.Name ?? "SYSTEM";
+        var roleGuid = await _roleService.CreateRoleAsync(request.Name, createdBy);
+        return Ok(new { success = true, roleGuid });
+    }
+
+    [Authorize(Roles = "1")]
+    [HttpGet]
+    public async Task<IActionResult> GetActive()
+    {
+        var roles = await _roleService.GetActiveRolesAsync();
+        return Ok(roles);
     }
 
     [Authorize(Roles = "1")]
     [HttpPut("{roleGuid}")]
     public async Task<IActionResult> Update(string roleGuid, [FromBody] SV.Common.DTOs.Role.UpdateRoleDto request)
     {
-        var updatedBy = User.Identity?.Name ?? "SYSTEM";
+        var updatedBy = User.FindFirst("UserGuid")?.Value ?? User.Identity?.Name ?? "SYSTEM";
         await _roleService.UpdateRoleAsync(roleGuid, request.Name, updatedBy);
         return Ok(new { success = true });
     }
@@ -40,7 +48,7 @@ public class RoleController : ControllerBase
     [HttpDelete("{roleGuid}")]
     public async Task<IActionResult> Delete(string roleGuid)
     {
-        var updatedBy = User.Identity?.Name ?? "SYSTEM";
+        var updatedBy = User.FindFirst("UserGuid")?.Value ?? User.Identity?.Name ?? "SYSTEM";
         await _roleService.DeleteRoleAsync(roleGuid, updatedBy);
         return Ok(new { success = true });
     }

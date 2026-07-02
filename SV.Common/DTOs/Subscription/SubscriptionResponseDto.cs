@@ -1,10 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SV.Common.DTOs.Subscription
 {
-    internal class SubscriptionResponseDto
+    public class SubscriptionResponseDto
     {
+        public string FullName { get; set; } = string.Empty;
+        public string PlanName { get; set; } = string.Empty;
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

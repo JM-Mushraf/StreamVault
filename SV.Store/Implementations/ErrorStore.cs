@@ -16,7 +16,7 @@ namespace SV.Store.Implementations
         public async Task LogErrorAsync(string errorMessage, string errorProcedure, int errorLine, string stackTrace)
         {
             using var connection = _dbConnectionFactory.CreateConnection();
-            await connection.ExecuteAsync("usp_InsertErrorLog", new
+            await connection.ExecuteAsync(SV.Common.Constants.AppConstants.SpInsertErrorLog, new
             {
                 ErrorMessage = errorMessage,
                 ErrorProcedure = errorProcedure,

@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SV.Service.Abstractions;
+using SV.Common.DTOs.Subscription;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ProjectFileStructure.Controllers;
@@ -29,7 +30,7 @@ public class SubscriptionController : ControllerBase
 
     [Authorize]
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] SV.Common.DTOs.SubscriptionCreateRequest request)
+    public async Task<IActionResult> Create([FromBody] SubscriptionCreateRequest request)
     {
         string transactionRef = Guid.NewGuid().ToString();
 
@@ -39,8 +40,8 @@ public class SubscriptionController : ControllerBase
         var userStore = HttpContext.RequestServices.GetRequiredService<SV.Store.Abstractions.IUserStore>();
         var userId = await userStore.GetUserIdByGuidAsync(userGuid);
         if (userId == null) return NotFound(new { success = false, message = "User not found" });
-
-        await _subscriptionService.CreateSubscriptionAsync(userId.Value, request.PlanId, request.StartDate, request.EndDate, "PENDING", transactionRef);
+        // pass PlanGuid and createdBy (userGuid)
+        await _subscriptionService.CreateSubscriptionAsync(userId.Value, request.PlanGuid, request.StartDate, request.EndDate, "PENDING", transactionRef, userGuid);
         return Ok(new { success = true, transactionReference = transactionRef });
     }
 }

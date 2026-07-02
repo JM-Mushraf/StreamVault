@@ -6,19 +6,25 @@ namespace SV.Service.Implementations
 {
     public class WatchlistService : IWatchlistService
     {
-        public Task AddToWatchlistAsync(int userId, int movieId)
+        private readonly SV.Store.Abstractions.IWatchlistStore _store;
+
+        public WatchlistService(SV.Store.Abstractions.IWatchlistStore store)
         {
-            return Task.CompletedTask;
+            _store = store;
+        }
+        public Task AddToWatchlistAsync(string userGuid, string movieGuid, string createdBy, string? profileGuid = null)
+        {
+            return _store.AddAsync(userGuid, movieGuid, createdBy, profileGuid);
         }
 
         public Task RemoveFromWatchlistAsync(string watchlistGuid, string updatedBy)
         {
-            return Task.CompletedTask;
+            return _store.RemoveAsync(watchlistGuid, updatedBy);
         }
 
-        public Task<List<object>> GetUserWatchlistAsync(string userGuid)
+        public Task<List<object>> GetUserWatchlistAsync(string userGuid, string? profileGuid = null)
         {
-            return Task.FromResult(new List<object>());
+            return _store.GetByUserAsync(userGuid, profileGuid);
         }
     }
 }

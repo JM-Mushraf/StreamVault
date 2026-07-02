@@ -1,0 +1,900 @@
+﻿{
+    "openapi":  "3.0.4",
+    "info":  {
+                 "title":  "StreamVault",
+                 "version":  "1.0"
+             },
+    "paths":  {
+                  "/api/Admin/seed":  {
+                                          "post":  {
+                                                       "tags":  [
+                                                                    "Admin"
+                                                                ],
+                                                       "responses":  {
+                                                                         "200":  {
+                                                                                     "description":  "OK"
+                                                                                 }
+                                                                     }
+                                                   }
+                                      },
+                  "/api/Auth/login":  {
+                                          "post":  {
+                                                       "tags":  [
+                                                                    "Auth"
+                                                                ],
+                                                       "requestBody":  {
+                                                                           "content":  {
+                                                                                           "application/json":  {
+                                                                                                                    "schema":  {
+                                                                                                                                   "$ref":  "#/components/schemas/LoginRequestDto"
+                                                                                                                               }
+                                                                                                                },
+                                                                                           "text/json":  {
+                                                                                                             "schema":  {
+                                                                                                                            "$ref":  "#/components/schemas/LoginRequestDto"
+                                                                                                                        }
+                                                                                                         },
+                                                                                           "application/*+json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/LoginRequestDto"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                       }
+                                                                       },
+                                                       "responses":  {
+                                                                         "200":  {
+                                                                                     "description":  "OK"
+                                                                                 }
+                                                                     }
+                                                   }
+                                      },
+                  "/api/Auth/logout":  {
+                                           "post":  {
+                                                        "tags":  [
+                                                                     "Auth"
+                                                                 ],
+                                                        "responses":  {
+                                                                          "200":  {
+                                                                                      "description":  "OK"
+                                                                                  }
+                                                                      }
+                                                    }
+                                       },
+                  "/api/Auth/register":  {
+                                             "post":  {
+                                                          "tags":  [
+                                                                       "Auth"
+                                                                   ],
+                                                          "responses":  {
+                                                                            "200":  {
+                                                                                        "description":  "OK"
+                                                                                    }
+                                                                        }
+                                                      }
+                                         },
+                  "/api/Auth/profile":  {
+                                            "put":  {
+                                                        "tags":  [
+                                                                     "Auth"
+                                                                 ],
+                                                        "responses":  {
+                                                                          "200":  {
+                                                                                      "description":  "OK"
+                                                                                  }
+                                                                      }
+                                                    }
+                                        },
+                  "/api/Dashboard/admin":  {
+                                               "get":  {
+                                                           "tags":  [
+                                                                        "Dashboard"
+                                                                    ],
+                                                           "responses":  {
+                                                                             "200":  {
+                                                                                         "description":  "OK"
+                                                                                     }
+                                                                         }
+                                                       }
+                                           },
+                  "/api/Dashboard/user":  {
+                                              "get":  {
+                                                          "tags":  [
+                                                                       "Dashboard"
+                                                                   ],
+                                                          "responses":  {
+                                                                            "200":  {
+                                                                                        "description":  "OK"
+                                                                                    }
+                                                                        }
+                                                      }
+                                          },
+                  "/api/Genre":  {
+                                     "get":  {
+                                                 "tags":  [
+                                                              "Genre"
+                                                          ],
+                                                 "responses":  {
+                                                                   "200":  {
+                                                                               "description":  "OK"
+                                                                           }
+                                                               }
+                                             },
+                                     "post":  {
+                                                  "tags":  [
+                                                               "Genre"
+                                                           ],
+                                                  "requestBody":  {
+                                                                      "content":  {
+                                                                                      "application/json":  {
+                                                                                                               "schema":  {
+                                                                                                                              "$ref":  "#/components/schemas/CreateGenreDto"
+                                                                                                                          }
+                                                                                                           },
+                                                                                      "text/json":  {
+                                                                                                        "schema":  {
+                                                                                                                       "$ref":  "#/components/schemas/CreateGenreDto"
+                                                                                                                   }
+                                                                                                    },
+                                                                                      "application/*+json":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "$ref":  "#/components/schemas/CreateGenreDto"
+                                                                                                                            }
+                                                                                                             }
+                                                                                  }
+                                                                  },
+                                                  "responses":  {
+                                                                    "200":  {
+                                                                                "description":  "OK"
+                                                                            }
+                                                                }
+                                              }
+                                 },
+                  "/api/Movie/latest":  {
+                                            "get":  {
+                                                        "tags":  [
+                                                                     "Movie"
+                                                                 ],
+                                                        "parameters":  [
+                                                                           {
+                                                                               "name":  "genres",
+                                                                               "in":  "query",
+                                                                               "schema":  {
+                                                                                              "type":  "array",
+                                                                                              "items":  {
+                                                                                                            "type":  "string"
+                                                                                                        }
+                                                                                          }
+                                                                           }
+                                                                       ],
+                                                        "responses":  {
+                                                                          "200":  {
+                                                                                      "description":  "OK"
+                                                                                  }
+                                                                      }
+                                                    }
+                                        },
+                  "/api/Movie/by-genres":  {
+                                               "get":  {
+                                                           "tags":  [
+                                                                        "Movie"
+                                                                    ],
+                                                           "parameters":  [
+                                                                              {
+                                                                                  "name":  "pageNumber",
+                                                                                  "in":  "query",
+                                                                                  "schema":  {
+                                                                                                 "type":  "integer",
+                                                                                                 "format":  "int32",
+                                                                                                 "default":  1
+                                                                                             }
+                                                                              },
+                                                                              {
+                                                                                  "name":  "pageSize",
+                                                                                  "in":  "query",
+                                                                                  "schema":  {
+                                                                                                 "type":  "integer",
+                                                                                                 "format":  "int32",
+                                                                                                 "default":  10
+                                                                                             }
+                                                                              },
+                                                                              {
+                                                                                  "name":  "genres",
+                                                                                  "in":  "query",
+                                                                                  "schema":  {
+                                                                                                 "type":  "array",
+                                                                                                 "items":  {
+                                                                                                               "type":  "string"
+                                                                                                           }
+                                                                                             }
+                                                                              }
+                                                                          ],
+                                                           "responses":  {
+                                                                             "200":  {
+                                                                                         "description":  "OK"
+                                                                                     }
+                                                                         }
+                                                       }
+                                           },
+                  "/api/Movie":  {
+                                     "post":  {
+                                                  "tags":  [
+                                                               "Movie"
+                                                           ],
+                                                  "responses":  {
+                                                                    "200":  {
+                                                                                "description":  "OK"
+                                                                            }
+                                                                }
+                                              }
+                                 },
+                  "/api/Movie/{movieGuid}":  {
+                                                 "get":  {
+                                                             "tags":  [
+                                                                          "Movie"
+                                                                      ],
+                                                             "parameters":  [
+                                                                                {
+                                                                                    "name":  "movieGuid",
+                                                                                    "in":  "path",
+                                                                                    "required":  true,
+                                                                                    "schema":  {
+                                                                                                   "type":  "string"
+                                                                                               }
+                                                                                }
+                                                                            ],
+                                                             "responses":  {
+                                                                               "200":  {
+                                                                                           "description":  "OK"
+                                                                                       }
+                                                                           }
+                                                         },
+                                                 "put":  {
+                                                             "tags":  [
+                                                                          "Movie"
+                                                                      ],
+                                                             "parameters":  [
+                                                                                {
+                                                                                    "name":  "movieGuid",
+                                                                                    "in":  "path",
+                                                                                    "required":  true,
+                                                                                    "schema":  {
+                                                                                                   "type":  "string"
+                                                                                               }
+                                                                                }
+                                                                            ],
+                                                             "responses":  {
+                                                                               "200":  {
+                                                                                           "description":  "OK"
+                                                                                       }
+                                                                           }
+                                                         }
+                                             },
+                  "/api/Payment":  {
+                                       "post":  {
+                                                    "tags":  [
+                                                                 "Payment"
+                                                             ],
+                                                    "requestBody":  {
+                                                                        "content":  {
+                                                                                        "application/json":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "$ref":  "#/components/schemas/PaymentCreateRequest"
+                                                                                                                            }
+                                                                                                             },
+                                                                                        "text/json":  {
+                                                                                                          "schema":  {
+                                                                                                                         "$ref":  "#/components/schemas/PaymentCreateRequest"
+                                                                                                                     }
+                                                                                                      },
+                                                                                        "application/*+json":  {
+                                                                                                                   "schema":  {
+                                                                                                                                  "$ref":  "#/components/schemas/PaymentCreateRequest"
+                                                                                                                              }
+                                                                                                               }
+                                                                                    }
+                                                                    },
+                                                    "responses":  {
+                                                                      "200":  {
+                                                                                  "description":  "OK"
+                                                                              }
+                                                                  }
+                                                }
+                                   },
+                  "/api/Plan":  {
+                                    "get":  {
+                                                "tags":  [
+                                                             "Plan"
+                                                         ],
+                                                "responses":  {
+                                                                  "200":  {
+                                                                              "description":  "OK"
+                                                                          }
+                                                              }
+                                            },
+                                    "post":  {
+                                                 "tags":  [
+                                                              "Plan"
+                                                          ],
+                                                 "requestBody":  {
+                                                                     "content":  {
+                                                                                     "application/json":  {
+                                                                                                              "schema":  {
+                                                                                                                             "$ref":  "#/components/schemas/CreatePlanRequest"
+                                                                                                                         }
+                                                                                                          },
+                                                                                     "text/json":  {
+                                                                                                       "schema":  {
+                                                                                                                      "$ref":  "#/components/schemas/CreatePlanRequest"
+                                                                                                                  }
+                                                                                                   },
+                                                                                     "application/*+json":  {
+                                                                                                                "schema":  {
+                                                                                                                               "$ref":  "#/components/schemas/CreatePlanRequest"
+                                                                                                                           }
+                                                                                                            }
+                                                                                 }
+                                                                 },
+                                                 "responses":  {
+                                                                   "200":  {
+                                                                               "description":  "OK"
+                                                                           }
+                                                               }
+                                             }
+                                },
+                  "/api/Review":  {
+                                      "post":  {
+                                                   "tags":  [
+                                                                "Review"
+                                                            ],
+                                                   "requestBody":  {
+                                                                       "content":  {
+                                                                                       "application/json":  {
+                                                                                                                "schema":  {
+                                                                                                                               "$ref":  "#/components/schemas/ReviewCreateRequest"
+                                                                                                                           }
+                                                                                                            },
+                                                                                       "text/json":  {
+                                                                                                         "schema":  {
+                                                                                                                        "$ref":  "#/components/schemas/ReviewCreateRequest"
+                                                                                                                    }
+                                                                                                     },
+                                                                                       "application/*+json":  {
+                                                                                                                  "schema":  {
+                                                                                                                                 "$ref":  "#/components/schemas/ReviewCreateRequest"
+                                                                                                                             }
+                                                                                                              }
+                                                                                   }
+                                                                   },
+                                                   "responses":  {
+                                                                     "200":  {
+                                                                                 "description":  "OK"
+                                                                             }
+                                                                 }
+                                               }
+                                  },
+                  "/api/Review/movie/{movieGuid}":  {
+                                                        "get":  {
+                                                                    "tags":  [
+                                                                                 "Review"
+                                                                             ],
+                                                                    "parameters":  [
+                                                                                       {
+                                                                                           "name":  "movieGuid",
+                                                                                           "in":  "path",
+                                                                                           "required":  true,
+                                                                                           "schema":  {
+                                                                                                          "type":  "string"
+                                                                                                      }
+                                                                                       }
+                                                                                   ],
+                                                                    "responses":  {
+                                                                                      "200":  {
+                                                                                                  "description":  "OK"
+                                                                                              }
+                                                                                  }
+                                                                }
+                                                    },
+                  "/api/Role":  {
+                                    "post":  {
+                                                 "tags":  [
+                                                              "Role"
+                                                          ],
+                                                 "requestBody":  {
+                                                                     "content":  {
+                                                                                     "application/json":  {
+                                                                                                              "schema":  {
+                                                                                                                             "$ref":  "#/components/schemas/CreateRoleDto"
+                                                                                                                         }
+                                                                                                          },
+                                                                                     "text/json":  {
+                                                                                                       "schema":  {
+                                                                                                                      "$ref":  "#/components/schemas/CreateRoleDto"
+                                                                                                                  }
+                                                                                                   },
+                                                                                     "application/*+json":  {
+                                                                                                                "schema":  {
+                                                                                                                               "$ref":  "#/components/schemas/CreateRoleDto"
+                                                                                                                           }
+                                                                                                            }
+                                                                                 }
+                                                                 },
+                                                 "responses":  {
+                                                                   "200":  {
+                                                                               "description":  "OK"
+                                                                           }
+                                                               }
+                                             },
+                                    "get":  {
+                                                "tags":  [
+                                                             "Role"
+                                                         ],
+                                                "responses":  {
+                                                                  "200":  {
+                                                                              "description":  "OK"
+                                                                          }
+                                                              }
+                                            }
+                                },
+                  "/api/Role/{roleGuid}":  {
+                                               "put":  {
+                                                           "tags":  [
+                                                                        "Role"
+                                                                    ],
+                                                           "parameters":  [
+                                                                              {
+                                                                                  "name":  "roleGuid",
+                                                                                  "in":  "path",
+                                                                                  "required":  true,
+                                                                                  "schema":  {
+                                                                                                 "type":  "string"
+                                                                                             }
+                                                                              }
+                                                                          ],
+                                                           "requestBody":  {
+                                                                               "content":  {
+                                                                                               "application/json":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "$ref":  "#/components/schemas/UpdateRoleDto"
+                                                                                                                                   }
+                                                                                                                    },
+                                                                                               "text/json":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "$ref":  "#/components/schemas/UpdateRoleDto"
+                                                                                                                            }
+                                                                                                             },
+                                                                                               "application/*+json":  {
+                                                                                                                          "schema":  {
+                                                                                                                                         "$ref":  "#/components/schemas/UpdateRoleDto"
+                                                                                                                                     }
+                                                                                                                      }
+                                                                                           }
+                                                                           },
+                                                           "responses":  {
+                                                                             "200":  {
+                                                                                         "description":  "OK"
+                                                                                     }
+                                                                         }
+                                                       },
+                                               "delete":  {
+                                                              "tags":  [
+                                                                           "Role"
+                                                                       ],
+                                                              "parameters":  [
+                                                                                 {
+                                                                                     "name":  "roleGuid",
+                                                                                     "in":  "path",
+                                                                                     "required":  true,
+                                                                                     "schema":  {
+                                                                                                    "type":  "string"
+                                                                                                }
+                                                                                 }
+                                                                             ],
+                                                              "responses":  {
+                                                                                "200":  {
+                                                                                            "description":  "OK"
+                                                                                        }
+                                                                            }
+                                                          }
+                                           },
+                  "/api/Subscription/active":  {
+                                                   "get":  {
+                                                               "tags":  [
+                                                                            "Subscription"
+                                                                        ],
+                                                               "responses":  {
+                                                                                 "200":  {
+                                                                                             "description":  "OK"
+                                                                                         }
+                                                                             }
+                                                           }
+                                               },
+                  "/api/Subscription":  {
+                                            "post":  {
+                                                         "tags":  [
+                                                                      "Subscription"
+                                                                  ],
+                                                         "requestBody":  {
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/SubscriptionCreateRequest"
+                                                                                                                                 }
+                                                                                                                  },
+                                                                                             "text/json":  {
+                                                                                                               "schema":  {
+                                                                                                                              "$ref":  "#/components/schemas/SubscriptionCreateRequest"
+                                                                                                                          }
+                                                                                                           },
+                                                                                             "application/*+json":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "$ref":  "#/components/schemas/SubscriptionCreateRequest"
+                                                                                                                                   }
+                                                                                                                    }
+                                                                                         }
+                                                                         },
+                                                         "responses":  {
+                                                                           "200":  {
+                                                                                       "description":  "OK"
+                                                                                   }
+                                                                       }
+                                                     }
+                                        },
+                  "/api/WatchHistory":  {
+                                            "post":  {
+                                                         "tags":  [
+                                                                      "WatchHistory"
+                                                                  ],
+                                                         "requestBody":  {
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/WatchHistoryCreateRequest"
+                                                                                                                                 }
+                                                                                                                  },
+                                                                                             "text/json":  {
+                                                                                                               "schema":  {
+                                                                                                                              "$ref":  "#/components/schemas/WatchHistoryCreateRequest"
+                                                                                                                          }
+                                                                                                           },
+                                                                                             "application/*+json":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "$ref":  "#/components/schemas/WatchHistoryCreateRequest"
+                                                                                                                                   }
+                                                                                                                    }
+                                                                                         }
+                                                                         },
+                                                         "responses":  {
+                                                                           "200":  {
+                                                                                       "description":  "OK"
+                                                                                   }
+                                                                       }
+                                                     }
+                                        },
+                  "/api/WatchHistory/paged":  {
+                                                  "get":  {
+                                                              "tags":  [
+                                                                           "WatchHistory"
+                                                                       ],
+                                                              "parameters":  [
+                                                                                 {
+                                                                                     "name":  "page",
+                                                                                     "in":  "query",
+                                                                                     "schema":  {
+                                                                                                    "type":  "integer",
+                                                                                                    "format":  "int32",
+                                                                                                    "default":  1
+                                                                                                }
+                                                                                 },
+                                                                                 {
+                                                                                     "name":  "size",
+                                                                                     "in":  "query",
+                                                                                     "schema":  {
+                                                                                                    "type":  "integer",
+                                                                                                    "format":  "int32",
+                                                                                                    "default":  10
+                                                                                                }
+                                                                                 }
+                                                                             ],
+                                                              "responses":  {
+                                                                                "200":  {
+                                                                                            "description":  "OK"
+                                                                                        }
+                                                                            }
+                                                          }
+                                              },
+                  "/api/Watchlist":  {
+                                         "post":  {
+                                                      "tags":  [
+                                                                   "Watchlist"
+                                                               ],
+                                                      "requestBody":  {
+                                                                          "content":  {
+                                                                                          "application/json":  {
+                                                                                                                   "schema":  {
+                                                                                                                                  "$ref":  "#/components/schemas/WatchlistCreateRequest"
+                                                                                                                              }
+                                                                                                               },
+                                                                                          "text/json":  {
+                                                                                                            "schema":  {
+                                                                                                                           "$ref":  "#/components/schemas/WatchlistCreateRequest"
+                                                                                                                       }
+                                                                                                        },
+                                                                                          "application/*+json":  {
+                                                                                                                     "schema":  {
+                                                                                                                                    "$ref":  "#/components/schemas/WatchlistCreateRequest"
+                                                                                                                                }
+                                                                                                                 }
+                                                                                      }
+                                                                      },
+                                                      "responses":  {
+                                                                        "200":  {
+                                                                                    "description":  "OK"
+                                                                                }
+                                                                    }
+                                                  }
+                                     },
+                  "/api/Watchlist/{watchlistGuid}":  {
+                                                         "delete":  {
+                                                                        "tags":  [
+                                                                                     "Watchlist"
+                                                                                 ],
+                                                                        "parameters":  [
+                                                                                           {
+                                                                                               "name":  "watchlistGuid",
+                                                                                               "in":  "path",
+                                                                                               "required":  true,
+                                                                                               "schema":  {
+                                                                                                              "type":  "string"
+                                                                                                          }
+                                                                                           }
+                                                                                       ],
+                                                                        "responses":  {
+                                                                                          "200":  {
+                                                                                                      "description":  "OK"
+                                                                                                  }
+                                                                                      }
+                                                                    }
+                                                     },
+                  "/api/Watchlist/user/{userGuid}":  {
+                                                         "get":  {
+                                                                     "tags":  [
+                                                                                  "Watchlist"
+                                                                              ],
+                                                                     "parameters":  [
+                                                                                        {
+                                                                                            "name":  "userGuid",
+                                                                                            "in":  "path",
+                                                                                            "required":  true,
+                                                                                            "schema":  {
+                                                                                                           "type":  "string"
+                                                                                                       }
+                                                                                        }
+                                                                                    ],
+                                                                     "responses":  {
+                                                                                       "200":  {
+                                                                                                   "description":  "OK"
+                                                                                               }
+                                                                                   }
+                                                                 }
+                                                     }
+              },
+    "components":  {
+                       "schemas":  {
+                                       "CreateGenreDto":  {
+                                                              "type":  "object",
+                                                              "properties":  {
+                                                                                 "name":  {
+                                                                                              "type":  "string",
+                                                                                              "nullable":  true
+                                                                                          }
+                                                                             },
+                                                              "additionalProperties":  false
+                                                          },
+                                       "CreatePlanRequest":  {
+                                                                 "type":  "object",
+                                                                 "properties":  {
+                                                                                    "name":  {
+                                                                                                 "type":  "string",
+                                                                                                 "nullable":  true
+                                                                                             },
+                                                                                    "description":  {
+                                                                                                        "type":  "string",
+                                                                                                        "nullable":  true
+                                                                                                    },
+                                                                                    "price":  {
+                                                                                                  "type":  "number",
+                                                                                                  "format":  "double"
+                                                                                              },
+                                                                                    "durationMonths":  {
+                                                                                                           "type":  "integer",
+                                                                                                           "format":  "int32"
+                                                                                                       }
+                                                                                },
+                                                                 "additionalProperties":  false
+                                                             },
+                                       "CreateRoleDto":  {
+                                                             "type":  "object",
+                                                             "properties":  {
+                                                                                "name":  {
+                                                                                             "type":  "string",
+                                                                                             "nullable":  true
+                                                                                         }
+                                                                            },
+                                                             "additionalProperties":  false
+                                                         },
+                                       "LoginRequestDto":  {
+                                                               "type":  "object",
+                                                               "properties":  {
+                                                                                  "email":  {
+                                                                                                "type":  "string",
+                                                                                                "nullable":  true
+                                                                                            },
+                                                                                  "password":  {
+                                                                                                   "type":  "string",
+                                                                                                   "nullable":  true
+                                                                                               }
+                                                                              },
+                                                               "additionalProperties":  false
+                                                           },
+                                       "PaymentCreateRequest":  {
+                                                                    "type":  "object",
+                                                                    "properties":  {
+                                                                                       "subscriptionId":  {
+                                                                                                              "type":  "integer",
+                                                                                                              "format":  "int32"
+                                                                                                          },
+                                                                                       "amount":  {
+                                                                                                      "type":  "number",
+                                                                                                      "format":  "double"
+                                                                                                  },
+                                                                                       "paymentMethod":  {
+                                                                                                             "type":  "string",
+                                                                                                             "nullable":  true
+                                                                                                         },
+                                                                                       "transactionStatus":  {
+                                                                                                                 "type":  "string",
+                                                                                                                 "nullable":  true
+                                                                                                             },
+                                                                                       "paidOn":  {
+                                                                                                      "type":  "string",
+                                                                                                      "format":  "date-time"
+                                                                                                  }
+                                                                                   },
+                                                                    "additionalProperties":  false
+                                                                },
+                                       "ReviewCreateRequest":  {
+                                                                   "type":  "object",
+                                                                   "properties":  {
+                                                                                      "movieGuid":  {
+                                                                                                        "type":  "string",
+                                                                                                        "nullable":  true
+                                                                                                    },
+                                                                                      "rating":  {
+                                                                                                     "type":  "integer",
+                                                                                                     "format":  "int32"
+                                                                                                 },
+                                                                                      "reviewText":  {
+                                                                                                         "type":  "string",
+                                                                                                         "nullable":  true
+                                                                                                     }
+                                                                                  },
+                                                                   "additionalProperties":  false
+                                                               },
+                                       "SubscriptionCreateRequest":  {
+                                                                         "type":  "object",
+                                                                         "properties":  {
+                                                                                            "planGuid":  {
+                                                                                                             "type":  "string",
+                                                                                                             "nullable":  true
+                                                                                                         },
+                                                                                            "startDate":  {
+                                                                                                              "type":  "string",
+                                                                                                              "format":  "date-time"
+                                                                                                          },
+                                                                                            "endDate":  {
+                                                                                                            "type":  "string",
+                                                                                                            "format":  "date-time"
+                                                                                                        }
+                                                                                        },
+                                                                         "additionalProperties":  false
+                                                                     },
+                                       "UpdateRoleDto":  {
+                                                             "type":  "object",
+                                                             "properties":  {
+                                                                                "name":  {
+                                                                                             "type":  "string",
+                                                                                             "nullable":  true
+                                                                                         }
+                                                                            },
+                                                             "additionalProperties":  false
+                                                         },
+                                       "WatchHistoryCreateRequest":  {
+                                                                         "type":  "object",
+                                                                         "properties":  {
+                                                                                            "userGuid":  {
+                                                                                                             "type":  "string",
+                                                                                                             "nullable":  true
+                                                                                                         },
+                                                                                            "movieGuid":  {
+                                                                                                              "type":  "string",
+                                                                                                              "nullable":  true
+                                                                                                          },
+                                                                                            "watchedDate":  {
+                                                                                                                "type":  "string",
+                                                                                                                "format":  "date-time"
+                                                                                                            },
+                                                                                            "watchMinutes":  {
+                                                                                                                 "type":  "integer",
+                                                                                                                 "format":  "int32"
+                                                                                                             },
+                                                                                            "deviceType":  {
+                                                                                                               "type":  "string",
+                                                                                                               "nullable":  true
+                                                                                                           }
+                                                                                        },
+                                                                         "additionalProperties":  false
+                                                                     },
+                                       "WatchlistCreateRequest":  {
+                                                                      "type":  "object",
+                                                                      "properties":  {
+                                                                                         "movieGuid":  {
+                                                                                                           "type":  "string",
+                                                                                                           "nullable":  true
+                                                                                                       }
+                                                                                     },
+                                                                      "additionalProperties":  false
+                                                                  }
+                                   },
+                       "securitySchemes":  {
+                                               "Bearer":  {
+                                                              "type":  "apiKey",
+                                                              "description":  "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter \u0027Bearer\u0027 [space] and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
+                                                              "name":  "Authorization",
+                                                              "in":  "header"
+                                                          }
+                                           }
+                   },
+    "security":  [
+                     {
+
+                     }
+                 ],
+    "tags":  [
+                 {
+                     "name":  "Admin"
+                 },
+                 {
+                     "name":  "Auth"
+                 },
+                 {
+                     "name":  "Dashboard"
+                 },
+                 {
+                     "name":  "Genre"
+                 },
+                 {
+                     "name":  "Movie"
+                 },
+                 {
+                     "name":  "Payment"
+                 },
+                 {
+                     "name":  "Plan"
+                 },
+                 {
+                     "name":  "Review"
+                 },
+                 {
+                     "name":  "Role"
+                 },
+                 {
+                     "name":  "Subscription"
+                 },
+                 {
+                     "name":  "WatchHistory"
+                 },
+                 {
+                     "name":  "Watchlist"
+                 }
+             ]
+}

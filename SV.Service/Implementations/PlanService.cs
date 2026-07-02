@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using SV.Service.Abstractions;
 using SV.Store.Abstractions;
+using SV.Common.DTOs;
 
 namespace SV.Service.Implementations
 {
@@ -19,9 +20,9 @@ namespace SV.Service.Implementations
             return _planStore.GetPlansAsync();
         }
 
-        public Task CreatePlanAsync(object request)
+        public Task CreatePlanAsync(CreatePlanRequest request, string createdBy)
         {
-            return _planStore.CreatePlanAsync(request);
+            return _planStore.CreatePlanAsync(request, createdBy);
         }
     }
 }

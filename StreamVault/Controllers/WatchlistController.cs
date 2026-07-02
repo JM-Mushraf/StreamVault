@@ -26,11 +26,11 @@ public class WatchlistController : ControllerBase
         var userGuid = User.FindFirst("UserGuid")?.Value;
         if (string.IsNullOrWhiteSpace(userGuid)) return Unauthorized();
 
-        var userStore = HttpContext.RequestServices.GetRequiredService<SV.Store.Abstractions.IUserStore>();
-        var userId = await userStore.GetUserIdByGuidAsync(userGuid);
-        if (userId == null) return NotFound(new { success = false, message = "User not found" });
+        var profileGuid = Request.Headers["X-Profile-Guid"].ToString();
+        if (string.IsNullOrWhiteSpace(profileGuid)) profileGuid = null;
 
-        await _watchlistService.AddToWatchlistAsync(userId.Value, request.MovieId);
+        var createdBy = User.Identity?.Name ?? User.FindFirst("FullName")?.Value ?? "system";
+        await _watchlistService.AddToWatchlistAsync(userGuid, request.MovieGuid, createdBy, profileGuid);
         return Ok(new { success = true });
     }
 
@@ -47,7 +47,10 @@ public class WatchlistController : ControllerBase
     [HttpGet("user/{userGuid}")]
     public async Task<IActionResult> GetUserWatchlist(string userGuid)
     {
-        var items = await _watchlistService.GetUserWatchlistAsync(userGuid);
+        var profileGuid = Request.Headers["X-Profile-Guid"].ToString();
+        if (string.IsNullOrWhiteSpace(profileGuid)) profileGuid = null;
+
+        var items = await _watchlistService.GetUserWatchlistAsync(userGuid, profileGuid);
         return Ok(items);
     }
 }

@@ -10,6 +10,5 @@ public class AuthResponseDto
 
     public string Token { get; set; } = string.Empty;
 
-    // RoleId from database (string to cover different schema types)
     public string RoleId { get; set; } = string.Empty;
 }

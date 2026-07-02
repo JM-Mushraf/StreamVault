@@ -1,0 +1,975 @@
+﻿[
+    {
+        "TABLE_NAME":  "mst_Genre",
+        "COLUMN_NAME":  "GenreId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Genre",
+        "COLUMN_NAME":  "GenreGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Genre",
+        "COLUMN_NAME":  "GenreName",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Genre",
+        "COLUMN_NAME":  "IsActive",
+        "DATA_TYPE":  "bit",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Genre",
+        "COLUMN_NAME":  "CreatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Genre",
+        "COLUMN_NAME":  "CreatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Genre",
+        "COLUMN_NAME":  "UpdatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Genre",
+        "COLUMN_NAME":  "UpdatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "MovieId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "MovieGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "GenreId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "MovieName",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  100,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "DurationMinutes",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "ReleaseDate",
+        "DATA_TYPE":  "date",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "Language",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "Rating",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "IsActive",
+        "DATA_TYPE":  "bit",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "CreatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "CreatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "UpdatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "UpdatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "MovieVideoUrl",
+        "DATA_TYPE":  "nvarchar",
+        "CHARACTER_MAXIMUM_LENGTH":  500,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "MovieVideoPublicId",
+        "DATA_TYPE":  "nvarchar",
+        "CHARACTER_MAXIMUM_LENGTH":  255,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "VideoTranscodeStatus",
+        "DATA_TYPE":  "nvarchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "AvailableFormats",
+        "DATA_TYPE":  "nvarchar",
+        "CHARACTER_MAXIMUM_LENGTH":  -1,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "ThumbnailUrl",
+        "DATA_TYPE":  "nvarchar",
+        "CHARACTER_MAXIMUM_LENGTH":  500,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Movie",
+        "COLUMN_NAME":  "ThumbnailPublicId",
+        "DATA_TYPE":  "nvarchar",
+        "CHARACTER_MAXIMUM_LENGTH":  255,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Plan",
+        "COLUMN_NAME":  "PlanId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Plan",
+        "COLUMN_NAME":  "PlanGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Plan",
+        "COLUMN_NAME":  "PlanName",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Plan",
+        "COLUMN_NAME":  "MonthlyPrice",
+        "DATA_TYPE":  "decimal",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Plan",
+        "COLUMN_NAME":  "ScreenLimit",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Plan",
+        "COLUMN_NAME":  "VideoQuality",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  20,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Plan",
+        "COLUMN_NAME":  "IsActive",
+        "DATA_TYPE":  "bit",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Plan",
+        "COLUMN_NAME":  "CreatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Plan",
+        "COLUMN_NAME":  "CreatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Plan",
+        "COLUMN_NAME":  "UpdatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Plan",
+        "COLUMN_NAME":  "UpdatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Role",
+        "COLUMN_NAME":  "RoleId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Role",
+        "COLUMN_NAME":  "RoleGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Role",
+        "COLUMN_NAME":  "RoleName",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Role",
+        "COLUMN_NAME":  "IsActive",
+        "DATA_TYPE":  "bit",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Role",
+        "COLUMN_NAME":  "CreatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Role",
+        "COLUMN_NAME":  "CreatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_Role",
+        "COLUMN_NAME":  "UpdatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_Role",
+        "COLUMN_NAME":  "UpdatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "UserId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "UserGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "FullName",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  100,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "Email",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  100,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "PasswordHash",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  255,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "Mobile",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  15,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "Country",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "RoleId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "IsActive",
+        "DATA_TYPE":  "bit",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "CreatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "CreatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "UpdatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "UpdatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "UserProfileImageUrl",
+        "DATA_TYPE":  "nvarchar",
+        "CHARACTER_MAXIMUM_LENGTH":  500,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "UserProfileImagePublicId",
+        "DATA_TYPE":  "nvarchar",
+        "CHARACTER_MAXIMUM_LENGTH":  255,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "PasswordResetToken",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  255,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "mst_User",
+        "COLUMN_NAME":  "PasswordResetExpiry",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_ErrorLog",
+        "COLUMN_NAME":  "ErrorLogId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_ErrorLog",
+        "COLUMN_NAME":  "ErrorGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_ErrorLog",
+        "COLUMN_NAME":  "ErrorMessage",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  -1,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_ErrorLog",
+        "COLUMN_NAME":  "ErrorProcedure",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  100,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_ErrorLog",
+        "COLUMN_NAME":  "ErrorLine",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_ErrorLog",
+        "COLUMN_NAME":  "StackTrace",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  -1,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_ErrorLog",
+        "COLUMN_NAME":  "LoggedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "PaymentId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "PaymentGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "SubscriptionId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "Amount",
+        "DATA_TYPE":  "decimal",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "PaymentMethod",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "TransactionStatus",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  30,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "PaidOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "IsActive",
+        "DATA_TYPE":  "bit",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "CreatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "CreatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "UpdatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_PaymentTransaction",
+        "COLUMN_NAME":  "UpdatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_Review",
+        "COLUMN_NAME":  "ReviewId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Review",
+        "COLUMN_NAME":  "ReviewGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Review",
+        "COLUMN_NAME":  "UserId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Review",
+        "COLUMN_NAME":  "MovieId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Review",
+        "COLUMN_NAME":  "Rating",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Review",
+        "COLUMN_NAME":  "ReviewText",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  -1,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_Review",
+        "COLUMN_NAME":  "IsActive",
+        "DATA_TYPE":  "bit",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Review",
+        "COLUMN_NAME":  "CreatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Review",
+        "COLUMN_NAME":  "CreatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Review",
+        "COLUMN_NAME":  "UpdatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_Review",
+        "COLUMN_NAME":  "UpdatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "SubscriptionId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "SubscriptionGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "UserId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "PlanId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "StartDate",
+        "DATA_TYPE":  "date",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "EndDate",
+        "DATA_TYPE":  "date",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "PaymentStatus",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  30,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "TransactionReference",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  100,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "IsActive",
+        "DATA_TYPE":  "bit",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "CreatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "CreatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "UpdatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_Subscription",
+        "COLUMN_NAME":  "UpdatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "WatchHistoryId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "WatchHistoryGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "UserId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "MovieId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "WatchedDate",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "WatchMinutes",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "DeviceType",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "IsActive",
+        "DATA_TYPE":  "bit",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "CreatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "CreatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "UpdatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_WatchHistory",
+        "COLUMN_NAME":  "UpdatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_Watchlist",
+        "COLUMN_NAME":  "WatchlistId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Watchlist",
+        "COLUMN_NAME":  "WatchlistGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Watchlist",
+        "COLUMN_NAME":  "UserId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Watchlist",
+        "COLUMN_NAME":  "MovieId",
+        "DATA_TYPE":  "int",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Watchlist",
+        "COLUMN_NAME":  "AddedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Watchlist",
+        "COLUMN_NAME":  "IsActive",
+        "DATA_TYPE":  "bit",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Watchlist",
+        "COLUMN_NAME":  "CreatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Watchlist",
+        "COLUMN_NAME":  "CreatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "tbl_Watchlist",
+        "COLUMN_NAME":  "UpdatedOn",
+        "DATA_TYPE":  "datetime",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "tbl_Watchlist",
+        "COLUMN_NAME":  "UpdatedBy",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "vw_UserSubscriptionDetails",
+        "COLUMN_NAME":  "UserGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "vw_UserSubscriptionDetails",
+        "COLUMN_NAME":  "FullName",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  100,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "vw_UserSubscriptionDetails",
+        "COLUMN_NAME":  "Email",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  100,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "vw_UserSubscriptionDetails",
+        "COLUMN_NAME":  "UserProfileImageUrl",
+        "DATA_TYPE":  "nvarchar",
+        "CHARACTER_MAXIMUM_LENGTH":  500,
+        "IS_NULLABLE":  "YES"
+    },
+    {
+        "TABLE_NAME":  "vw_UserSubscriptionDetails",
+        "COLUMN_NAME":  "PlanName",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  50,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "vw_UserSubscriptionDetails",
+        "COLUMN_NAME":  "MonthlyPrice",
+        "DATA_TYPE":  "decimal",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "vw_UserSubscriptionDetails",
+        "COLUMN_NAME":  "VideoQuality",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  20,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "vw_UserSubscriptionDetails",
+        "COLUMN_NAME":  "SubscriptionGuid",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  32,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "vw_UserSubscriptionDetails",
+        "COLUMN_NAME":  "StartDate",
+        "DATA_TYPE":  "date",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "vw_UserSubscriptionDetails",
+        "COLUMN_NAME":  "EndDate",
+        "DATA_TYPE":  "date",
+        "CHARACTER_MAXIMUM_LENGTH":  null,
+        "IS_NULLABLE":  "NO"
+    },
+    {
+        "TABLE_NAME":  "vw_UserSubscriptionDetails",
+        "COLUMN_NAME":  "PaymentStatus",
+        "DATA_TYPE":  "varchar",
+        "CHARACTER_MAXIMUM_LENGTH":  30,
+        "IS_NULLABLE":  "NO"
+    }
+]

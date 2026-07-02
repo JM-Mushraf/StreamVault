@@ -7,6 +7,6 @@ public class WatchlistCreateRequestValidator : AbstractValidator<WatchlistCreate
 {
     public WatchlistCreateRequestValidator()
     {
-        RuleFor(x => x.MovieId).GreaterThan(0);
+        RuleFor(x => x.MovieGuid).NotEmpty();
     }
 }

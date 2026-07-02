@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -22,6 +22,10 @@ namespace SV.Common.Constants
 
         public const string SpInsertMovie = "usp_InsertMovie";
         public const string SpGetLatestMovies = "usp_GetLatestMovies";
+        public const string SpGetMovieByGuid = "usp_GetMovieByGuid";
+        public const string SpGetLatestMoviesByGenres = "usp_GetLatestMoviesByGenres";
+        public const string SpUpdateMovie = "usp_UpdateMovie";
+        public const string SpGetTrendingMovies = "usp_GetTrendingMoviesPaged";
 
         public const string SpInsertSubscription = "usp_CreateSubscription";
         public const string SpGetUserSubscriptionDetails = "vw_UserSubscriptionDetails"; // view
@@ -37,5 +41,12 @@ namespace SV.Common.Constants
 
         public const string SpAddReview = "usp_AddReview";
         public const string SpGetMovieReviews = "usp_GetMovieReviews";
+        
+
+        public const string SpInsertGenreLiteral = "InsertGenre"; 
+        public const string SpInsertErrorLog = "usp_InsertErrorLog"; 
+        public const string SpGetAdminDashboard = "usp_GetAdminDashboard"; 
+        public const string SpGetUserDashboard = "usp_GetUserDashboard"; 
+        public const string SpGetActiveSubscriptions = "usp_GetActiveSubscriptions"; 
     }
 }

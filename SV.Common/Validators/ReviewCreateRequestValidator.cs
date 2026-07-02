@@ -7,7 +7,7 @@ public class ReviewCreateRequestValidator : AbstractValidator<ReviewCreateReques
 {
     public ReviewCreateRequestValidator()
     {
-        RuleFor(x => x.MovieId).GreaterThan(0);
+        RuleFor(x => x.MovieGuid).NotEmpty();
         RuleFor(x => x.Rating).InclusiveBetween(0, 10);
     }
 }

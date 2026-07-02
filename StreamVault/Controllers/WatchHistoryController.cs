@@ -25,19 +25,44 @@ public class WatchHistoryController : ControllerBase
         var userGuid = User.FindFirst("UserGuid")?.Value;
         if (string.IsNullOrWhiteSpace(userGuid)) return Unauthorized();
 
-        var userStore = HttpContext.RequestServices.GetRequiredService<SV.Store.Abstractions.IUserStore>();
-        var userId = await userStore.GetUserIdByGuidAsync(userGuid);
-        if (userId == null) return NotFound(new { success = false, message = "User not found" });
+        var profileGuid = Request.Headers["X-Profile-Guid"].ToString();
+        if (string.IsNullOrWhiteSpace(profileGuid)) profileGuid = null;
 
-        await _watchHistoryService.InsertWatchHistoryAsync(userId.Value, request.MovieId, request.WatchedDate, request.WatchMinutes, request.DeviceType);
+        var createdBy = User.Identity?.Name ?? User.FindFirst("FullName")?.Value ?? "system";
+        await _watchHistoryService.InsertWatchHistoryAsync(userGuid, request.MovieGuid, request.WatchedDate, request.WatchMinutes, request.DeviceType, createdBy, request.PlayheadSeconds, request.IsFinished, profileGuid);
         return Ok(new { success = true });
     }
 
     [Authorize]
     [HttpGet("paged")]
-    public async Task<IActionResult> Paged([FromQuery] int userId, [FromQuery] int page = 1, [FromQuery] int size = 10)
+    public async Task<IActionResult> Paged([FromQuery] int page = 1, [FromQuery] int size = 10)
     {
-        var items = await _watchHistoryService.GetWatchHistoryPagedAsync(userId, page, size);
+        var userGuid = User.FindFirst("UserGuid")?.Value;
+        if (string.IsNullOrWhiteSpace(userGuid)) return Unauthorized();
+
+        var profileGuid = Request.Headers["X-Profile-Guid"].ToString();
+        if (string.IsNullOrWhiteSpace(profileGuid)) profileGuid = null;
+
+        var items = await _watchHistoryService.GetWatchHistoryPagedAsync(userGuid, page, size, profileGuid);
         return Ok(items);
+    }
+
+    [Authorize]
+    [HttpGet("resume/{movieGuid}")]
+    public async Task<IActionResult> GetResume(string movieGuid)
+    {
+        var userGuid = User.FindFirst("UserGuid")?.Value;
+        if (string.IsNullOrWhiteSpace(userGuid)) return Unauthorized();
+
+        var profileGuid = Request.Headers["X-Profile-Guid"].ToString();
+        if (string.IsNullOrWhiteSpace(profileGuid)) profileGuid = null;
+
+        var resume = await _watchHistoryService.GetResumeProgressAsync(userGuid, movieGuid, profileGuid);
+        if (resume == null)
+        {
+            return NotFound(new { success = false, message = "No playback history found for this movie." });
+        }
+
+        return Ok(resume);
     }
 }

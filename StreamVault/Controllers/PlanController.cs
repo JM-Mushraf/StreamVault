@@ -31,7 +31,8 @@ public class PlanController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreatePlanRequest request)
     {
-        await _planService.CreatePlanAsync(request);
+        var createdBy = User.FindFirst("UserGuid")?.Value ?? User.Identity?.Name ?? "system";
+        await _planService.CreatePlanAsync(request, createdBy);
         return Ok(new { success = true });
     }
 }

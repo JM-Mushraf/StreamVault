@@ -3,18 +3,21 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using SV.Store.Abstractions;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 
-namespace ProjectFileStructure.Controllers.Middleware
+namespace ProjectFileStructure.Middleware
 {
     public class ExceptionMiddlewareImpl
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<ExceptionMiddlewareImpl> _logger;
+        private readonly IWebHostEnvironment _env;
 
-        public ExceptionMiddlewareImpl(RequestDelegate next, ILogger<ExceptionMiddlewareImpl> logger)
+        public ExceptionMiddlewareImpl(RequestDelegate next, ILogger<ExceptionMiddlewareImpl> logger, IWebHostEnvironment env)
         {
             _next = next;
             _logger = logger;
+            _env = env;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -25,7 +28,7 @@ namespace ProjectFileStructure.Controllers.Middleware
             }
             catch (System.Exception ex)
             {
-                _logger.LogError(ex, "Unhandled exception");
+                _logger.LogError(ex, "Unhandled exception: {Message}", ex.Message);
                 try
                 {
                     // Resolve scoped IErrorStore from the request services to avoid resolving scoped services from the root provider
@@ -39,7 +42,17 @@ namespace ProjectFileStructure.Controllers.Middleware
 
                 context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 context.Response.ContentType = "application/json";
-                await context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(new { success = false, message = "An error occurred." }));
+
+                // Show detailed error in development, generic in production
+                var errorMessage = _env.IsDevelopment() ? ex.Message : "An error occurred.";
+                var errorDetails = _env.IsDevelopment() ? ex.StackTrace : null;
+
+                await context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(new 
+                { 
+                    success = false, 
+                    message = errorMessage,
+                    details = errorDetails
+                }));
             }
         }
     }

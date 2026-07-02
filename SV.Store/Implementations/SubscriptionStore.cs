@@ -6,6 +6,7 @@ using System.Linq;
 using SV.Store.Abstractions;
 using SV.Data.Connections;
 using SV.Common.Constants;
+using SV.Common.DTOs.Subscription;
 
 namespace SV.Store.Implementations
 {
@@ -18,13 +19,34 @@ namespace SV.Store.Implementations
             _connectionFactory = connectionFactory;
         }
 
-        public async Task<List<object>> GetSubscriptionsAsync()
+        public async Task<List<SubscriptionResponseDto>> GetActiveSubscriptionsAsync()
         {
             using var conn = _connectionFactory.CreateConnection();
             if (conn.State == ConnectionState.Closed) conn.Open();
 
-            var rows = await conn.QueryAsync<dynamic>("SELECT S.SubscriptionGuid, U.FullName, P.PlanName, S.StartDate, S.EndDate, S.PaymentStatus FROM tbl_Subscription S INNER JOIN mst_User U ON S.UserId = U.UserId INNER JOIN mst_Plan P ON S.PlanId = P.PlanId WHERE S.IsActive = 1", commandType: CommandType.Text);
-            return rows.Select(r => (object)r).ToList();
+            // Call stored procedure that returns FullName, PlanName, StartDate, EndDate
+            var rows = await conn.QueryAsync<SubscriptionResponseDto>(SV.Common.Constants.AppConstants.SpGetActiveSubscriptions, commandType: CommandType.StoredProcedure);
+            return rows.ToList();
+        }
+
+        public async Task<int> CreateSubscriptionAsync(int userId, string planGuid, System.DateTime startDate, System.DateTime endDate, string paymentStatus, string transactionReference, string createdBy)
+        {
+            using var conn = _connectionFactory.CreateConnection();
+            if (conn.State == ConnectionState.Closed) conn.Open();
+
+            var parameters = new
+            {
+                UserId = userId,
+                PlanGuid = planGuid,
+                StartDate = startDate,
+                EndDate = endDate,
+                PaymentStatus = paymentStatus,
+                TransactionReference = transactionReference,
+                CreatedBy = createdBy
+            };
+
+            var id = await conn.QuerySingleAsync<int>(SV.Common.Constants.AppConstants.SpInsertSubscription, parameters, commandType: CommandType.StoredProcedure);
+            return id;
         }
     }
 }

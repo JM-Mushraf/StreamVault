@@ -26,23 +26,19 @@ public class ReviewController : ControllerBase
         if (string.IsNullOrWhiteSpace(userGuid))
             return Unauthorized();
 
-        var userStoreObj = HttpContext.RequestServices.GetService(typeof(SV.Store.Abstractions.IUserStore));
-        if (userStoreObj == null)
-            return NotFound(new { success = false, message = "User store not available" });
+        var profileGuid = Request.Headers["X-Profile-Guid"].ToString();
+        if (string.IsNullOrWhiteSpace(profileGuid)) profileGuid = null;
 
-        var userStore = (SV.Store.Abstractions.IUserStore)userStoreObj;
-        var userId = await userStore.GetUserIdByGuidAsync(userGuid);
-        if (userId == null)
-            return NotFound(new { success = false, message = "User not found" });
+        var createdBy = User.Identity?.Name ?? User.FindFirst("FullName")?.Value ?? User.FindFirst("email")?.Value ?? string.Empty;
 
-        await _reviewService.AddReviewAsync(userId.Value, request.MovieId, request.Rating, request.ReviewText);
+        await _reviewService.AddReviewAsync(userGuid, request.MovieGuid, request.Rating, request.ReviewText, createdBy, profileGuid);
         return Ok(new { success = true });
     }
 
     [HttpGet("movie/{movieGuid}")]
     public async Task<IActionResult> GetByMovie(string movieGuid)
     {
-        var items = await _reviewService.GetMovieReviewsAsync(movieGuid);
-        return Ok(items);
+        var result = await _reviewService.GetByMovieGuidAsync(movieGuid);
+        return Ok(result);
     }
 }

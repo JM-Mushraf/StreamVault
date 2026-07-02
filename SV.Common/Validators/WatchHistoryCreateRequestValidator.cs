@@ -7,7 +7,9 @@ public class WatchHistoryCreateRequestValidator : AbstractValidator<WatchHistory
 {
     public WatchHistoryCreateRequestValidator()
     {
-        RuleFor(x => x.MovieId).GreaterThan(0);
-        RuleFor(x => x.WatchMinutes).GreaterThanOrEqualTo(0).LessThanOrEqualTo(1000);
+        RuleFor(x => x.UserGuid).NotEmpty();
+        RuleFor(x => x.MovieGuid).NotEmpty();
+        RuleFor(x => x.WatchMinutes).GreaterThanOrEqualTo(0);
+        RuleFor(x => x.DeviceType).NotEmpty();
     }
 }
